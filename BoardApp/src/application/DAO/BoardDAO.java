@@ -65,7 +65,7 @@ public class BoardDAO extends JDBC{
 		public Board select(int no) {
 			
 			// 게시글 정보 객체 생성
-			Board board = null;
+			Board board = new Board();
 			
 			// SQL 작성
 			String sql = " SELECT * "
@@ -144,7 +144,7 @@ public class BoardDAO extends JDBC{
 					   + "    SET title = ? "
 					   + "		 ,writer = ? "
 					   + "		 ,content = ?"
-					   + "		 ,updated_at = now() "
+					   + "		 ,upd_date = now() "
 					   + " WHERE no = ? ";
 			
 			try {
@@ -190,4 +190,28 @@ public class BoardDAO extends JDBC{
 			return result;
 		}
 
+		public int view(int no) {
+			int result = 0;			// 결과 : 적용된 데이터 개수
+			
+			String sql = " UPDATE board "
+					   + "    SET view = view + 1 "
+					   + "		 ,upd_date = now() "
+					   + " WHERE no = ? ";
+			
+			try {
+				psmt = con.prepareStatement(sql);			
+				psmt.setInt( 1, no);			
+				result = psmt.executeUpdate();				
+				// * executeUpdate() 
+				// SQL(INSERT, UPDATE, DELETE) 실행 시 적용된 데이터 개수를 int 타입으로 받아온다.
+				// ex) 게시글 1개 적용 성공 시, result : 1 
+				//				    실패 시, result : 0
+			} catch (SQLException e) {
+				System.err.println("update view failed");
+				e.printStackTrace();
+			}
+			return result;
 	}
+}
+
+

@@ -18,7 +18,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
 		scene = new Scene(loadFXML("Main"));	//Main.fxml
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
+		
+		
+		
 		
 		Image icon = new Image("icon.png");
 		stage.getIcons().add(icon);
@@ -35,9 +39,19 @@ public class Main extends Application {
 		scene.setRoot(root);
 	}
 	
+	public static FXMLLoader getLoader(String fxml) throws IOException{
+		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml+".fxml"));
+		return fxmlLoader;
+	}
+	
 	public static Parent loadFXML(String fxml) throws IOException{
 		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml+".fxml"));
 		return fxmlLoader.load();
+	}
+	
+	public static void exit() {
+		Stage stage = (Stage) scene.getWindow();
+		stage.close();
 	}
 	
 	public static void main(String[] args) {

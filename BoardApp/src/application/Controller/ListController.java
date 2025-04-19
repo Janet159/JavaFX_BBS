@@ -60,7 +60,7 @@ public class ListController {
     	colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
     	colView.setCellValueFactory(new PropertyValueFactory<>("View"));
     	
-    	ObservableList<Board> list = FXCollections.observableArrayList();
+    	ObservableList<Board> list = FXCollections.observableArrayList(boardList);
     	boardTableView.setItems(list);
     	
     	boardTableView.setOnMouseClicked( new EventHandler<MouseEvent>() {

@@ -55,7 +55,7 @@ public class UpdateController {
     }
 
 	public void passData(int boardNo2) {
-		this.boardNo = boardNo;
+		this.boardNo = boardNo2;
 		Board board = boardService.select(boardNo);
 		tfTitle.setText(board.getTitle());
 		tfWriter.setText(board.getWriter());

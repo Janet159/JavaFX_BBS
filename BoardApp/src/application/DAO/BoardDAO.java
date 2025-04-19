@@ -92,6 +92,7 @@ public class BoardDAO extends JDBC{
 					board.setTitle( rs.getString("title") );
 					board.setWriter( rs.getString("writer") );
 					board.setContent( rs.getString("content") );
+					board.setView( rs.getInt("view") );
 					board.setRegDate( rs.getTimestamp("reg_date") );
 					board.setUpdDate( rs.getTimestamp("upd_date") );
 				}

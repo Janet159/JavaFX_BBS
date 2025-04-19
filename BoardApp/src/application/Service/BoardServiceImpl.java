@@ -24,6 +24,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public Board select(int no) {
 		// 게시글 번호 no 를 DB 로 넘겨주고 게시글 정보 요청
+		boardDAO.view(no);
 		Board board = boardDAO.select(no);
 		// 게시글 정보 반환
 		return board;

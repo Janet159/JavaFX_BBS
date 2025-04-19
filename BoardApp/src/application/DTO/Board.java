@@ -1,6 +1,7 @@
 package application.DTO;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -28,6 +29,13 @@ public class Board {
 		this.updDate = new Date();
 		this.view = 0;
 		
+	}
+	
+	public String getDate() {
+		Date regDate = getRegDate();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String date = sdf.format(regDate);
+		return date;
 	}
 	
 	
